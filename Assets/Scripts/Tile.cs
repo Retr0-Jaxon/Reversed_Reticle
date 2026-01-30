@@ -11,6 +11,8 @@ public class Tile : Buttons
     private int x{get;set;}
     private int y{get;set;}
     
+    public bool isSelected { get;private set; }
+    
     
     
 

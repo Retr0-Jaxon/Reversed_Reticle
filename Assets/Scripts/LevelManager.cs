@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -14,11 +15,18 @@ public class LevelManager : MonoBehaviour
         Chessboard chessboard = Chessboard.instance;
         foreach (Tile tile in chessboard.tiles)
         {
-            if (tile.)
+            if (tile.isSelected&&tile.tileType==TileType.LIGHT)
+            {
+                return false;
+            }
+
+            if (!tile.isSelected&&tile.tileType==TileType.NORMAL)
             {
                 return false;
             }
         }
+
+        return true;
     }
     
     
