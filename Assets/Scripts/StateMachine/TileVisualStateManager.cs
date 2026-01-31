@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer))]
@@ -16,7 +17,7 @@ public class TileVisualStateManager : MonoBehaviour
     // 状态实例
     private BaseVisualState currentState;
     public IdleState IdleState { get; private set; }
-    public HoverState HoverState { get; private set; }
+    public SelectedState SelectedState { get; private set; }
     public HintState HintState { get; private set; }
     public LuminousState LuminousState { get; private set; }
 
@@ -29,7 +30,7 @@ public class TileVisualStateManager : MonoBehaviour
 
         // 初始化状态
         IdleState = new IdleState(this);
-        HoverState = new HoverState(this);
+        SelectedState = new SelectedState(this);
         HintState = new HintState(this);
         LuminousState = new LuminousState(this);
 
@@ -52,11 +53,18 @@ public class TileVisualStateManager : MonoBehaviour
     }
 
     // --- 鼠标交互事件 ---
-    private void OnMouseEnter() => TransitionToState(HoverState);
-    private void OnMouseExit() => TransitionToState(IdleState);
+    private void OnMouseDown()
+    {
+        if (currentState == IdleState)
+        {
+            TransitionToState(SelectedState);
+        }
+        else if (currentState == SelectedState)
+        {
+            TransitionToState(IdleState);
+        }
+    }
     
-    private void OnClick() => TransitionToState(HoverState);
-
     // 外部调用接口，例如：unit.SetHint(true);
     public void SetHint(bool active) => TransitionToState(active ? HintState : IdleState);
     public void SetLuminous(bool active) => TransitionToState(active ? LuminousState : IdleState);
