@@ -5,7 +5,7 @@ public class TileVisualStateManager : MonoBehaviour
 {
     [Header("外观配置")]
     public Color idleColor = Color.white;
-    public Color hoverColor = Color.yellow;
+    public Color selectedColor = Color.yellow;
     public Color luminousColor = Color.white;
     [ColorUsage(true, true)] public Color glowColor = Color.yellow;
     public Material stripeMaterial;
@@ -16,7 +16,7 @@ public class TileVisualStateManager : MonoBehaviour
     // 状态实例
     private BaseVisualState currentState;
     public IdleState IdleState { get; private set; }
-    public HoverState HoverState { get; private set; }
+    public SelectedState SelectedState { get; private set; }
     public HintState HintState { get; private set; }
     public LuminousState LuminousState { get; private set; }
 
@@ -29,7 +29,7 @@ public class TileVisualStateManager : MonoBehaviour
 
         // 初始化状态
         IdleState = new IdleState(this);
-        HoverState = new HoverState(this);
+        SelectedState = new SelectedState(this);
         HintState = new HintState(this);
         LuminousState = new LuminousState(this);
 
@@ -41,7 +41,7 @@ public class TileVisualStateManager : MonoBehaviour
     {
         currentState?.Update();
     }
-
+    
     public void TransitionToState(BaseVisualState newState)
     {
         if (currentState == newState) return;
@@ -52,10 +52,18 @@ public class TileVisualStateManager : MonoBehaviour
     }
 
     // --- 鼠标交互事件 ---
-    private void OnMouseEnter() => TransitionToState(HoverState);
-    private void OnMouseExit() => TransitionToState(IdleState);
-    
-    private void OnClick() => TransitionToState(HoverState);
+    private void OnMouseDown()
+    {
+        // Hint 和 Luminous 状态由外部控制，不受点击影响
+        if (currentState == IdleState)
+        {
+            TransitionToState(SelectedState);
+        }
+        else if (currentState == SelectedState)
+        {
+            TransitionToState(IdleState);
+        }
+    } 
 
     // 外部调用接口，例如：unit.SetHint(true);
     public void SetHint(bool active) => TransitionToState(active ? HintState : IdleState);
