@@ -55,10 +55,7 @@ public class TileVisualStateManager : MonoBehaviour
     private void OnMouseEnter() => TransitionToState(HoverState);
     private void OnMouseExit() => TransitionToState(IdleState);
     
-    private void OnMouseDown()
-    {
-        Debug.Log("abc");
-    }
+    private void OnClick() => TransitionToState(HoverState);
 
     // 外部调用接口，例如：unit.SetHint(true);
     public void SetHint(bool active) => TransitionToState(active ? HintState : IdleState);
