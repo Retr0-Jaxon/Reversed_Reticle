@@ -4,6 +4,15 @@ using UnityEngine;
 [CustomEditor(typeof(Chessboard))]
 public class UnitGeneratorEditor : Editor
 {
+    private void OnEnable()
+    {
+        Chessboard generator = (Chessboard)target;
+        // 只在还没初始化时赋默认值
+        if (generator.BoardX <= 0)
+            generator.BoardX = 5;
+        if (generator.BoardY <= 0)
+            generator.BoardY = 5;
+    }
     public override void OnInspectorGUI()
     {
         // 先画原本的 Inspector
