@@ -19,6 +19,10 @@ public class TileHoverEffect : MonoBehaviour
     
     void OnMouseEnter()
     {
+        if (!Main.MouseEnabled)
+        {
+            return;
+        }
         if (!isHovering)
         {
             isHovering = true;

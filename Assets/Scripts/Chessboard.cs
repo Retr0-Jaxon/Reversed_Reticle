@@ -54,6 +54,19 @@ public class Chessboard : MonoBehaviour
         }
         
     }
+    
+    private void Start()
+    {
+        initTiles();
+
+    }
+    private void initTiles()
+    {
+        foreach (Tile tile in tiles)
+        {
+            tile.TileType=TileType.NORMAL;
+        }
+    }
 
 
 
