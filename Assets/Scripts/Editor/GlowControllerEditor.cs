@@ -46,7 +46,7 @@ public class GlowControllerEditor : Editor
 
         if (GUILayout.Button("添加发光tiles"))
         {
-            controller.Commands.Add(new GlowUnitsCommand(1,1f));
+            controller.Commands.Add(new GlowUnitsCommand(0,1f));
         }
 
         if (GUILayout.Button("添加waitTime"))
