@@ -4,7 +4,7 @@ using com.startech.Buttons;
 using Enums;
 using UnityEngine;
 
-public class Tile
+public class Tile : MonoBehaviour
 {
     [SerializeField]
     private TileType tileType;
@@ -58,6 +58,7 @@ public class Tile
      */
     public void glow()
     {
+        
         
     }
 

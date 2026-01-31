@@ -63,6 +63,13 @@ public class TileVisualStateManager : MonoBehaviour
         {
             TransitionToState(IdleState);
         }
+
+        var component = GetComponent<Tile>();
+        if (component==null)
+        {
+            component=gameObject.AddComponent<Tile>();
+        }
+        component.onClick();
     } 
 
     // 外部调用接口，例如：unit.SetHint(true);

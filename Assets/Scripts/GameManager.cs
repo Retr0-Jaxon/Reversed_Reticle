@@ -38,7 +38,8 @@ public class GameManager : MonoBehaviour
      */
     private void levelClear()
     {
-        // 1. 读取当前存档进度
+        Debug.Log("通关了");
+        /*// 1. 读取当前存档进度
         int reachedLevel = GameManager.MaxLevelReached;
 
         // 2. 如果当前关卡就是最高进度，则解锁下一关
@@ -49,12 +50,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("进度已更新！现在解锁了第 " + (GameManager.CurrentLevel  + 1) + " 关");
         }
 
-        // 3. 接下来做什么？（二选一）
-        // 方案 A: 直接加载下一关
-        SceneManager.LoadScene("Level"+(GameManager.CurrentLevel+1));
-
-        // 方案 B: 返回主菜单（让玩家在关卡选择界面看新解锁的关卡）
-        //SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Level"+(GameManager.CurrentLevel+1));*/
     }
     
 
