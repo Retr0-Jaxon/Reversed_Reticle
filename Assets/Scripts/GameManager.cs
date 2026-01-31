@@ -1,28 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-
 
 public class GameManager : MonoBehaviour
 {
-    public static int CurrentLevel;
+    // 当前正在玩的关卡
+    public static int CurrentLevel = 1;
 
-    public static int MaxLevelReached = 1;
+    // 已经解锁的最高关卡 (从本地存储读取)
+    public static int MaxLevelReached 
+    {
+        get => PlayerPrefs.GetInt("MaxLevelReached", 1);
+        set => PlayerPrefs.SetInt("MaxLevelReached", value);
+    }
     
     public static GameManager instance;
-    
     private LevelManager levelManager;
     
     private void Awake()
     {
-        instance = this;
+        // 简单的单例模式
+        if (instance == null) {
+            instance = this;
+            // 如果这个脚本挂在每个场景都有的物体上，且你不希望它消失：
+            // DontDestroyOnLoad(gameObject); 
+        }
+
         levelManager = new LevelManager();
+
+        // 【关键修复】：根据当前场景的名字自动更新 CurrentLevel
+        // 假设场景名是 "Level1", "Level2"...
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName.StartsWith("Level"))
+        {
+            string levelNum = sceneName.Replace("Level", "");
+            int.TryParse(levelNum, out CurrentLevel);
+        }
     }
 
-    /**
-     * 检测关卡是否完成
-     */
     public void checkLevelComplete()
     {
         if (levelManager.isLevelComplete())
@@ -31,32 +45,20 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    
-    
-    /**
-     * 通关所执行的逻辑
-     */
     private void levelClear()
     {
-        Debug.Log("通关了");
-        /*// 1. 读取当前存档进度
-        int reachedLevel = GameManager.MaxLevelReached;
-
-        // 2. 如果当前关卡就是最高进度，则解锁下一关
-        // 例如：我正在打第1关，当前存档也是1，那么解锁到第2关
-        if (GameManager.CurrentLevel >= reachedLevel)
+        // 1. 如果当前关卡是最高进度，解锁下一关
+        if (CurrentLevel >= MaxLevelReached)
         {
-            GameManager.MaxLevelReached += 1;
-            Debug.Log("进度已更新！现在解锁了第 " + (GameManager.CurrentLevel  + 1) + " 关");
+            MaxLevelReached = CurrentLevel + 1;
+            PlayerPrefs.Save(); // 立即保存到硬盘
         }
 
-        SceneManager.LoadScene("Level"+(GameManager.CurrentLevel+1));*/
+        // 2. 计算下一关的关卡号
+        int nextLevel = CurrentLevel + 1;
+
+        // 3. 加载下一关
+        // 注意：要在 Build Settings 里添加了对应的场景，否则会报错
+        SceneManager.LoadScene("Level" + nextLevel);
     }
-    
-
-
-
-
-
-
 }
