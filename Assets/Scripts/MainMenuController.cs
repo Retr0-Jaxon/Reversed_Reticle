@@ -8,6 +8,7 @@ public class MainMenuController : MonoBehaviour
     public GameObject titlePanel;       // 拖入 TitlePanel
     public GameObject levelSelectPanel; // 拖入 LevelSelectPanel
     public GameObject CreditsPanel;     // 拖入 CreditsPanel
+    public VideoManager videoManager;   // 拖入 VideoManager 脚本组件
 
     // 点击 "Start Game" 按钮调用，切换到关卡选择界面
     public void OpenLevelSelect()
@@ -15,6 +16,7 @@ public class MainMenuController : MonoBehaviour
         titlePanel.SetActive(false);
         levelSelectPanel.SetActive(true);
         CreditsPanel.SetActive(false);
+        videoManager.OnLevelSelected();
     }
 
     // 点击 "Back" 按钮调用，返回主标题
