@@ -14,7 +14,6 @@ public class Tile : MonoBehaviour
     /**
      * 发光的组号
      */
-    [SerializeField]
     private int glowGroup;
     
 
@@ -74,6 +73,12 @@ public class Tile : MonoBehaviour
         tileVisualStateManager.SetLuminous(false);
     }
 
+
+    public void setGlow(bool glow)
+    {
+        tileVisualStateManager.SetLuminous(glow);
+        
+    }
 
 
 
