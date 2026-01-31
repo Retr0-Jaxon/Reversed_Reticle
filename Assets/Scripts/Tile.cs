@@ -9,6 +9,13 @@ public class Tile
     [SerializeField]
     private TileType tileType;
 
+    /**
+     * 发光的组号
+     */
+    [SerializeField]
+    private int glowGroup;
+    
+
     [SerializeField]
     private int x;
     [SerializeField]
@@ -32,6 +39,11 @@ public class Tile
         set => y = value;
     }
 
+    public int GlowGroup
+    {
+        get => glowGroup;
+        set => glowGroup = value;
+    }
     public bool isSelected { get;private set; }
 
 
@@ -40,11 +52,18 @@ public class Tile
         isSelected = !isSelected;
         GameManager.instance.checkLevelComplete();
     }
-    
-    
-    
-    
-    
-    
+
+    /**
+     * 发光方法，待填充
+     */
+    public void glow()
+    {
+        
+    }
+
+
+
+
+
 
 }

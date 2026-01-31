@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Chessboard : MonoBehaviour
@@ -26,5 +27,26 @@ public class Chessboard : MonoBehaviour
             
         }
         
+    }
+
+
+    private void Start()
+    {
+        StartCoroutine(GlowByGroup());
+        
+    }
+    IEnumerator GlowByGroup()
+    {
+        var groups = tiles
+            .GroupBy(t => t.GlowGroup)
+            .OrderBy(g => g.Key);
+        foreach (var group in groups)
+        {
+            foreach (Tile tile in group)
+            {
+                tile.glow();
+            }
+            yield return new WaitForSeconds(2f);
+        }
     }
 }
