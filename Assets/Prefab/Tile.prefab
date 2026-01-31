@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7009135162298277625}
   - component: {fileID: 8666654153129523031}
   - component: {fileID: 497395666353280586}
-  - component: {fileID: 4340681840842283142}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
@@ -32,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.286, y: -0.017, z: -0.008173162}
-  m_LocalScale: {x: 0.16, y: 0.16, z: 0.16}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.26365042, y: 0.26365042, z: 0.26365042}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -141,19 +140,3 @@ MonoBehaviour:
   stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
   meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
---- !u!114 &4340681840842283142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1872854874224676266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b3a12a3a89e49ef9b6599d2b04f122f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileType: 0
-  glowGroup: 0
-  x: 0
-  y: 0
