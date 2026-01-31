@@ -14,15 +14,15 @@ public class Chessboard : MonoBehaviour
     
     [SerializeField]
     private GameObject tilePrefab;
-    
-    [SerializeField]
-    private float tileSize = 1.0f;
 
     public int BoardX
     {
         get => boardX;
         set => boardX = value;
     }
+
+    [SerializeField]
+    private float tileSize = 1.0f;
 
     public int BoardY
     {
@@ -56,12 +56,8 @@ public class Chessboard : MonoBehaviour
     }
 
 
-    private void Start()
-    {
-        StartCoroutine(GlowByGroup());
-        
-    }
-    IEnumerator GlowByGroup()
+
+    /*IEnumerator GlowByGroup()
     {
         var groups = tiles
             .GroupBy(t => t.GlowGroup)
@@ -90,7 +86,7 @@ public class Chessboard : MonoBehaviour
             }
             yield return new WaitForSeconds(0.3f);
         }
-    }
+    }*/
 
 
 
