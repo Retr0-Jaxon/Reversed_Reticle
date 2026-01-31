@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,10 +11,12 @@ namespace com.startech.Buttons
     [AddComponentMenu("Buttons/Buttons")]
     public class Buttons : MonoBehaviour
     {
-        [Header("当鼠标按下时触发的函数")] 
-        public UnityEvent onClick; //当鼠标按下时触发的函数
-        protected SpriteRenderer spriteRenderer;
-        protected BoxCollider2D boxCollider2D;
+        [FormerlySerializedAs("onClick")]
+        [Header("当鼠标按下时触发的函数")]
+        [SerializeField]
+        private UnityEvent onClickEvent; //当鼠标按下时触发的函数
+        private SpriteRenderer spriteRenderer;
+        private BoxCollider2D boxCollider2D;
         private bool onCooling;
         private AudioClip clickSound;
         public static AudioClip ClickSoundCache;
@@ -23,10 +26,34 @@ namespace com.startech.Buttons
         private float delay = 0.1f; //按钮的点击间隔
         [Header("激活")] [Tooltip("activated:按钮是否激活，如果没激活就不会响应点击。")]
         [SerializeField]
-        private bool activated = true; //按钮是否已激活
+        private bool activated = true; //按钮是否激活
         [Header("启用按钮遮挡检测")]
         [SerializeField]
         private bool enableBlockCheck = false; //启用按钮的遮挡检测，按钮被其他角色遮挡后会失效
+
+
+        [Header("是否开启默认特效")]
+        [SerializeField]
+        private bool enableDefaultSpecialEffect=false;  //是否开启默认特效
+
+        public UnityEvent OnClickEvent
+        {
+            get => onClickEvent;
+            set => onClickEvent = value;
+        }
+
+        public SpriteRenderer SpriteRenderer
+        {
+            get => spriteRenderer;
+            set => spriteRenderer = value;
+        }
+
+        public BoxCollider2D BoxCollider2D
+        {
+            get => boxCollider2D;
+            set => boxCollider2D = value;
+        }
+
         public float Delay
         {
             get => delay;
@@ -46,11 +73,15 @@ namespace com.startech.Buttons
         }
 
         
+        public bool Interactable=> activated && !onCooling&&IsLogicEnabled();
+        
+        
         private const string BLOCK_LAYER_NAME = "UI";//检测阻挡按钮的层
         
 
         protected void Start()
         {
+            Debug.Log("heeelo");
             //设置对象的layer
             if (enableBlockCheck)
             {
@@ -87,12 +118,12 @@ namespace com.startech.Buttons
 
         private void AddDefaultListener()
         {
-            int persistentEventCount = onClick.GetPersistentEventCount();
+            int persistentEventCount = onClickEvent.GetPersistentEventCount();
             // Debug.Log(persistentEventCount);
             bool hasOnClickListener = false;
             for (int i = 0; i < persistentEventCount; i++)
             {
-                string persistentMethodName = onClick.GetPersistentMethodName(i);
+                string persistentMethodName = onClickEvent.GetPersistentMethodName(i);
                 if (persistentMethodName == "OnClick")
                 {
                     hasOnClickListener = true;
@@ -102,7 +133,7 @@ namespace com.startech.Buttons
 
             if (!hasOnClickListener)
             {
-                onClick.AddListener(OnClick);
+                onClickEvent.AddListener(OnClick);
             }
         }
 
@@ -116,7 +147,7 @@ namespace com.startech.Buttons
 
         protected virtual void Update()
         {
-            if (activated == false || IsButtonEnable() == false )
+            if (!Interactable)
             {
                 return;
             }
@@ -129,24 +160,25 @@ namespace com.startech.Buttons
 
             
             MouseEnter();
-            if (!Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
             {
-                return;
+                Click();
             }
-            //Debug.Log("点击到了");
+        }
+        
+        
+        private void Click()
+        {
+            Debug.Log("点击到了");
             if (onCooling)
             {
                 return;
             }
             PlayClickSound();
-            onClick.Invoke();
-            /*if (!this.gameObject.activeInHierarchy)
-            {
-                return;
-            }*/
-
+            onClickEvent.Invoke();
             StartCoroutine(HandleButtonClick());
         }
+        
 
         /// <summary>
         /// 判断鼠标是否移动至按钮上，通过boxCollider2D组件的collider检测。
@@ -154,10 +186,12 @@ namespace com.startech.Buttons
         /// 注：由于摄像机在负轴，所以z越小越高。
         /// </summary>
         /// <returns></returns>
-        bool TouchMouse()
+        private bool TouchMouse()
         {
             Vector3 mousePos = MousePosition.GetMousePosition();
             Bounds bounds = boxCollider2D.bounds;
+            // Debug.Log("bounds:"+bounds);
+            // Debug.Log("mousePos:"+mousePos);
             if (mousePos.x > bounds.min.x && mousePos.x < bounds.max.x && mousePos.y > bounds.min.y &&
                 mousePos.y < bounds.max.y)
             {
@@ -195,7 +229,7 @@ namespace com.startech.Buttons
         /// 协程，用于给按钮增加延时。
         /// </summary>
         /// <returns></returns>
-        IEnumerator HandleButtonClick()
+        private IEnumerator HandleButtonClick()
         {
             onCooling = true;
             yield return new WaitForSeconds(delay);
@@ -210,10 +244,14 @@ namespace com.startech.Buttons
         }
 
         /// <summary>
-        /// 鼠标移动至按钮时触发
+        /// 鼠标移动至按钮时触发，默认有颜色改变特效
         /// </summary>
         public virtual void MouseEnter()
         {
+            if (!enableDefaultSpecialEffect)
+            {
+                return;
+            }
             spriteRenderer.color = new Color(1f, 1f, 1f, 0.65f);
         }
 
@@ -223,19 +261,18 @@ namespace com.startech.Buttons
         /// </summary>
         public virtual void MouseExit()
         {
+            if (!enableDefaultSpecialEffect)
+            {
+                return;
+            }
             spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
         }
 
-        /// <summary>
-        /// 用于子类重写按钮判定，判断按钮是否可以使用。
-        /// </summary>
-        /// <returns>
-        /// 如果为false，则鼠标移动至按钮时不会有反应。
-        /// </returns>
-        public virtual bool IsButtonEnable()
+        protected virtual bool IsLogicEnabled()
         {
             return true;
         }
+
         
         // 默认添加到按钮上的点击事件
         public virtual void OnClick()

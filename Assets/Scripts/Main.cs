@@ -4,7 +4,5 @@ using UnityEngine;
 
 public class Main
 {
-    public static int curLevel;
-    
     
 }
