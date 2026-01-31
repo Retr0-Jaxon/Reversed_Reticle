@@ -1,4 +1,3 @@
-﻿using UnityEngine;
 
 // --- 空闲状态 ---
 public class IdleState : BaseVisualState
@@ -15,15 +14,36 @@ public class IdleState : BaseVisualState
 }
 
 // --- 悬浮状态 ---
-public class HoverState : BaseVisualState
+// public class HoverState : BaseVisualState
+// {
+//     public HoverState(TileVisualStateManager manager) : base(manager) { }
+//     public override void Enter()
+//     {
+//         manager.instanceMaterial.color = manager.hoverColor;
+//     }
+//     public override void Update() { }
+//     public override void Exit() { }
+// }
+
+// --- 被选中的状态 ---
+public class SelectedState : BaseVisualState
 {
-    public HoverState(TileVisualStateManager manager) : base(manager) { }
+    public SelectedState(TileVisualStateManager manager) : base(manager)
+    {
+    }
+
     public override void Enter()
     {
-        manager.instanceMaterial.color = manager.hoverColor;
+        manager.instanceMaterial.color = manager.selectedColor;
     }
-    public override void Update() { }
-    public override void Exit() { }
+
+    public override void Update()
+    {
+    }
+
+    public override void Exit()
+    {
+    }
 }
 
 // --- 提示状态 (条纹) ---
