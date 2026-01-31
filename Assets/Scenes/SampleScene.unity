@@ -291,12 +291,12 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 1933836056579014681
-      type: {class: WaitCommand, ns: , asm: Assembly-CSharp}
+      type: {class: WaitCommand, ns: '', asm: Assembly-CSharp}
       data:
         commandType: 1
         waitTime: 1
     - rid: 1933836056579014682
-      type: {class: GlowUnitsCommand, ns: , asm: Assembly-CSharp}
+      type: {class: GlowUnitsCommand, ns: '', asm: Assembly-CSharp}
       data:
         commandType: 0
         tiles:
@@ -304,12 +304,12 @@ MonoBehaviour:
         - {fileID: 2137141019}
         glowTime: 1
     - rid: 1933836056579014683
-      type: {class: WaitCommand, ns: , asm: Assembly-CSharp}
+      type: {class: WaitCommand, ns: '', asm: Assembly-CSharp}
       data:
         commandType: 1
         waitTime: 1
     - rid: 1933836056579014684
-      type: {class: GlowUnitsCommand, ns: , asm: Assembly-CSharp}
+      type: {class: GlowUnitsCommand, ns: '', asm: Assembly-CSharp}
       data:
         commandType: 0
         tiles:
