@@ -136,7 +136,7 @@ public class Chessboard : MonoBehaviour
                 Vector3 localPos = new Vector3(
                     (i - offsetX) * tileSize,
                     (offsetY-j) * tileSize,
-                    0f
+                    -0.01f
                 );
                 GameObject tile = Instantiate(tilePrefab, transform);
                 var tileComponent = tile.GetComponent<Tile>();
