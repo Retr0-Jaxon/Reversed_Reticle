@@ -3,6 +3,7 @@
     public enum GlowCommandType
     {
         GlowUnits,
-        Wait
+        Wait,
+        Hint
     }
 }

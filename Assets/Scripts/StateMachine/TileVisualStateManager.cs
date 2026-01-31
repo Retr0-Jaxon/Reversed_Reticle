@@ -4,13 +4,14 @@ using UnityEngine;
 public class TileVisualStateManager : MonoBehaviour
 {
     [Header("外观配置")]
-    public Color idleColor = Color.white;
-    public Color selectedColor = Color.yellow;
-    public Color luminousColor;
+    public Material instanceMaterial;
+    public Material luminousMaterial;
     public Material stripeMaterial;
-
+    public Material selectedMaterial;
+    
+    [HideInInspector] public TileHoverEffect hoverEffect;
     [HideInInspector] public MeshRenderer meshRenderer;
-    [HideInInspector] public Material instanceMaterial;
+    //public Material baseMaterial;
 
     // 状态实例
     private BaseVisualState currentState;
@@ -22,15 +23,16 @@ public class TileVisualStateManager : MonoBehaviour
 
     void Awake()
     {
-        Color lumiColor;
-        if (ColorUtility.TryParseHtmlString("#CA4AFD", out lumiColor))
-        {
-            gameObject.GetComponent<TileVisualStateManager>().luminousColor = lumiColor;
-        }
+        // Color lumiColor;
+        // if (ColorUtility.TryParseHtmlString("#CA4AFD", out lumiColor))
+        // {
+        //     gameObject.GetComponent<TileVisualStateManager>().luminousColor = lumiColor;
+        // }
         meshRenderer = GetComponent<MeshRenderer>();
         // 创建独立材质实例防止修改预制体资源
-        instanceMaterial = Instantiate(meshRenderer.material);
+        //instanceMaterial = Instantiate(meshRenderer.material);
         meshRenderer.material = instanceMaterial;
+        hoverEffect = GetComponent<TileHoverEffect>();
 
         // 初始化状态
         IdleState = new IdleState(this);
@@ -63,13 +65,13 @@ public class TileVisualStateManager : MonoBehaviour
         if (currentState == IdleState)
         {
             TransitionToState(SelectedState);
-            GetComponent<TileHoverEffect>().originalMaterial = instanceMaterial;
+            //GetComponent<TileHoverEffect>().originalMaterial = instanceMaterial;
             
         }
         else if (currentState == SelectedState)
         {
             TransitionToState(IdleState);
-            GetComponent<TileHoverEffect>().originalMaterial = instanceMaterial;
+            //GetComponent<TileHoverEffect>().originalMaterial = instanceMaterial;
         }
 
         var component = GetComponent<Tile>();
@@ -81,8 +83,13 @@ public class TileVisualStateManager : MonoBehaviour
     } 
 
     // 外部调用接口，例如：unit.SetHint(true);
-    
-    
-    public void SetHint(bool active) => TransitionToState(active ? HintState : IdleState);
+
+
+    public void SetHint()
+    {
+        instanceMaterial=stripeMaterial;
+        hoverEffect.originalMaterial=stripeMaterial;
+        meshRenderer.material=stripeMaterial;
+    }
     public void SetLuminous(bool active) => TransitionToState(active ? LuminousState : IdleState);
 }
