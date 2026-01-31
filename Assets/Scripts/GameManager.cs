@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static int CurrentLevel;
 
-    public static int MaxLevelReached;
+    public static int MaxLevelReached = 1;
     
     public static GameManager instance;
     
