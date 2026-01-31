@@ -59,6 +59,10 @@ public class TileVisualStateManager : MonoBehaviour
     // --- 鼠标交互事件 ---
     private void OnMouseDown()
     {
+        if (!Main.MouseEnabled)
+        {
+            return;
+        }
         // Hint 和 Luminous 状态由外部控制不受点击影响
         if (currentState == IdleState)
         {

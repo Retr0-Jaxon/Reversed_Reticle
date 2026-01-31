@@ -24,6 +24,7 @@ public class GlowController : MonoBehaviour
     }
     private IEnumerator PlaySequence()
     {
+        Main.disabledMouse();
         foreach (var command in sequence.Commands)
         {
             switch (command.commandType)
@@ -42,6 +43,7 @@ public class GlowController : MonoBehaviour
                     break;
             }
         }
+        Main.resumeMouse();
     }
     
     private void ExecuteGlow(GlowUnitsCommand command)
