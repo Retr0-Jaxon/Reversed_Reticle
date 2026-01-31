@@ -8,6 +8,8 @@ public class Tile : MonoBehaviour
 {
     [SerializeField]
     private TileType tileType;
+    
+    private TileVisualStateManager tileVisualStateManager;
 
     /**
      * 发光的组号
@@ -38,6 +40,11 @@ public class Tile : MonoBehaviour
         get => y;
         set => y = value;
     }
+    
+    private void Awake()
+    {
+        tileVisualStateManager = GetComponent<TileVisualStateManager>();
+    }
 
     public int GlowGroup
     {
@@ -54,12 +61,17 @@ public class Tile : MonoBehaviour
     }
 
     /**
-     * 发光方法，待填充
+     * 发光方法
      */
     public void glow()
     {
+        tileVisualStateManager.SetLuminous( true);
         
-        
+    }
+    
+    public void stopGlow()
+    {
+        tileVisualStateManager.SetLuminous(false);
     }
 
 

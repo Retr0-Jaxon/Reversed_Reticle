@@ -13,7 +13,7 @@ public class LevelManager
     public bool isLevelComplete()
     {
         Chessboard chessboard = Chessboard.instance;
-        foreach (Tile tile in chessboard.tiles)
+        foreach (Tile tile in chessboard.Tiles)
         {
             if (tile.isSelected&&tile.TileType==TileType.LIGHT)
             {
