@@ -102,22 +102,12 @@ namespace com.startech.Buttons
         private void AddDefaultListener()
         {
             int persistentEventCount = onClickEvent.GetPersistentEventCount();
-            // Debug.Log(persistentEventCount);
-            bool hasOnClickListener = false;
             for (int i = 0; i < persistentEventCount; i++)
             {
                 string persistentMethodName = onClickEvent.GetPersistentMethodName(i);
-                if (persistentMethodName == "OnClick")
-                {
-                    hasOnClickListener = true;
-                    break;
-                }
             }
 
-            if (!hasOnClickListener)
-            {
-                onClickEvent.AddListener(OnClick);
-            }
+            onClickEvent.AddListener(OnClick);
         }
 
         private void PlayClickSound()

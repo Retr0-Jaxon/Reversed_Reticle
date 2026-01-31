@@ -6,10 +6,20 @@ public class MaskBlock : Buttons
 {
     [Header("L 方块的子格（每个 1×1）")]
     public List<Transform> subBlocks;
-
-    private Vector3 dragOffset;
+    
     private Vector3 lastValidPosition;
     private Quaternion lastValidRotation;
+    
+    private Camera mainCamera;
+
+    private bool onDragging;
+    
+    
+    public override void NextStart()
+    {
+        mainCamera=Camera.main;
+        onDragging = false;
+    }
 
     protected override void Update()
     {
@@ -21,34 +31,42 @@ public class MaskBlock : Buttons
             transform.Rotate(0, 0, -90f);
             HighlightCoveredTiles();
         }
-    }
-
-    // Buttons 系统里的点击回调
-    public override void OnClick()
-    {
-        dragOffset = transform.position - GetMouseWorldPos();
-        lastValidPosition = transform.position;
-        lastValidRotation = transform.rotation;
-    }
-
-    void LateUpdate()
-    {
-        // 拖动
-        if (Input.GetMouseButton(0))
-        {
-            transform.position = GetMouseWorldPos() + dragOffset;
-            HighlightCoveredTiles();
-        }
-
+        
         // 松开鼠标，判定是否合法
         if (Input.GetMouseButtonUp(0))
         {
+            onDragging = false;
             if (!IsValidPlacement())
             {
                 transform.position = lastValidPosition;
                 transform.rotation = lastValidRotation;
             }
         }
+    }
+
+    // Buttons 系统里的点击回调
+    public override void OnClick()
+    {
+        onDragging = true;
+        lastValidPosition = transform.position;
+        lastValidRotation = transform.rotation;
+    }
+
+    private void LateUpdate()
+    {
+        Debug.Log("lastValidPosition = " + lastValidPosition);
+        Debug.Log("lastValidRotation = " + lastValidRotation);
+        // 拖动
+        if (onDragging)
+        {
+            var mouseWorldPos = GetMouseWorldPos();
+            var transformPos = mouseWorldPos;
+            transformPos.z -= 0.5f;
+            transform.position = transformPos;
+            HighlightCoveredTiles();
+        }
+
+        
     }
 
     // ===================== 核心：坐标映射 =====================
@@ -75,10 +93,18 @@ public class MaskBlock : Buttons
         return result;
     }
 
-    bool IsValidPlacement()
+    private bool IsValidPlacement()
     {
         // 必须所有子块都正好落在 Tile 上
-        return GetCoveredTiles().Count == subBlocks.Count;
+        var count = GetCoveredTiles().Count;
+        if (count>0&&count!=subBlocks.Count)
+        {
+            return false;
+        }
+        
+        //不能发生碰撞
+
+        return true;
     }
 
     void HighlightCoveredTiles()
@@ -98,8 +124,13 @@ public class MaskBlock : Buttons
 
     Vector3 GetMouseWorldPos()
     {
-        Vector3 mouse = Input.mousePosition;
-        mouse.z = 10f;
-        return Camera.main.ScreenToWorldPoint(mouse);
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        // Z = -0.01 的平面
+        Plane plane = new Plane(Vector3.forward, new Vector3(0, 0, -0.01f));
+        if (plane.Raycast(ray, out float enter))
+        {
+            return ray.GetPoint(enter);
+        }
+        return transform.position;
     }
 }
