@@ -6,8 +6,8 @@ public class TileVisualStateManager : MonoBehaviour
     [Header("外观配置")]
     public Color idleColor = Color.white;
     public Color selectedColor = Color.yellow;
-    public Color luminousColor = Color.white;
-    [ColorUsage(true, true)] public Color glowColor = Color.yellow;
+    public Color luminousColor = new Color(0.5f,0,0.5f,1f);
+    //[ColorUsage(true, true)] public Color glowColor = Color.yellow;
     public Material stripeMaterial;
 
     [HideInInspector] public MeshRenderer meshRenderer;
@@ -19,6 +19,7 @@ public class TileVisualStateManager : MonoBehaviour
     public SelectedState SelectedState { get; private set; }
     public HintState HintState { get; private set; }
     public LuminousState LuminousState { get; private set; }
+    
 
     void Awake()
     {
@@ -58,14 +59,19 @@ public class TileVisualStateManager : MonoBehaviour
         if (currentState == IdleState)
         {
             TransitionToState(SelectedState);
+            GetComponent<TileHoverEffect>().originalMaterial = instanceMaterial;
+            
         }
         else if (currentState == SelectedState)
         {
             TransitionToState(IdleState);
+            GetComponent<TileHoverEffect>().originalMaterial = instanceMaterial;
         }
     } 
 
     // 外部调用接口，例如：unit.SetHint(true);
+    
+    
     public void SetHint(bool active) => TransitionToState(active ? HintState : IdleState);
     public void SetLuminous(bool active) => TransitionToState(active ? LuminousState : IdleState);
 }

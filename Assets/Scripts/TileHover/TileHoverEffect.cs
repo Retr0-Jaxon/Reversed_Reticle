@@ -9,7 +9,7 @@ public class TileHoverEffect : MonoBehaviour
     
     private MeshRenderer meshRenderer;
     public Material originalMaterial;
-    private Material hoverMaterial;
+    public Material hoverMaterial;
     private bool isHovering = false;
     
     void Awake()
@@ -25,7 +25,7 @@ public class TileHoverEffect : MonoBehaviour
         else
         {
             // 创建独立的悬浮材质
-            hoverMaterial = new Material(Shader.Find("Custom/TileHoverOutline"));
+            hoverMaterial = new Material(Shader.Find("Custom/TileHoverShader"));
         }
     }
     
