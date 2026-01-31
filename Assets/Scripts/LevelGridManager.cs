@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour
+public class LevelGridManager : MonoBehaviour
 {
     public Button[] levelButtons; 
 
@@ -10,8 +10,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        // 1. 获取玩家进度（从 PlayerPrefs 读取，默认值为 1）
-        int levelReached = PlayerPrefs.GetInt("levelReached", 1);
+        int levelReached = GameManager.MaxLevelReached;
 
         // 2. 遍历所有按钮进行初始化
         for (int i = 0; i < levelButtons.Length; i++)
@@ -62,8 +61,7 @@ public class LevelManager : MonoBehaviour
     [ContextMenu("Reset Player Progress")]
     public void ResetProgress()
     {
-        PlayerPrefs.SetInt("levelReached", 1);
-        PlayerPrefs.Save();
+        GameManager.MaxLevelReached = 1;
         Debug.Log("进度已重置为第 1 关");
     }
 }

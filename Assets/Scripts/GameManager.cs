@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
 {
-    public static int CurLevel;
+    public static int CurrentLevel;
 
     public static int MaxLevelReached;
     
@@ -38,10 +38,23 @@ public class GameManager : MonoBehaviour
      */
     private void levelClear()
     {
-        if (CurLevel == MaxLevelReached)
+        // 1. 读取当前存档进度
+        int reachedLevel = GameManager.MaxLevelReached;
+
+        // 2. 如果当前关卡就是最高进度，则解锁下一关
+        // 例如：我正在打第1关，当前存档也是1，那么解锁到第2关
+        if (GameManager.CurrentLevel >= reachedLevel)
         {
-            MaxLevelReached++;
+            GameManager.MaxLevelReached += 1;
+            Debug.Log("进度已更新！现在解锁了第 " + (GameManager.CurrentLevel  + 1) + " 关");
         }
+
+        // 3. 接下来做什么？（二选一）
+        // 方案 A: 直接加载下一关
+        SceneManager.LoadScene("Level"+(GameManager.CurrentLevel+1));
+
+        // 方案 B: 返回主菜单（让玩家在关卡选择界面看新解锁的关卡）
+        //SceneManager.LoadScene("MainMenu");
     }
     
 

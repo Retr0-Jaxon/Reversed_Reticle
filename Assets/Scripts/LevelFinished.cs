@@ -3,23 +3,20 @@ using UnityEngine.SceneManagement;
 
 public class LevelFinished : MonoBehaviour
 {
-    [Header("关卡设置")]
-    public int currentLevel;      // 当前是第几关？（例如：1）
     public string nextLevelName;  // 下一关的场景名字？（例如：Level2）
 
     // 当玩家触发过关（比如走到终点、打完Boss）时调用这个方法
     public void FinishLevel()
     {
         // 1. 读取当前存档进度
-        int reachedLevel = PlayerPrefs.GetInt("levelReached", 1);
+        int reachedLevel = GameManager.MaxLevelReached;
 
         // 2. 如果当前关卡就是最高进度，则解锁下一关
         // 例如：我正在打第1关，当前存档也是1，那么解锁到第2关
-        if (currentLevel >= reachedLevel)
+        if (GameManager.CurrentLevel >= reachedLevel)
         {
-            PlayerPrefs.SetInt("levelReached", currentLevel + 1);
-            PlayerPrefs.Save(); // 确认保存到硬盘
-            Debug.Log("进度已更新！现在解锁了第 " + (currentLevel + 1) + " 关");
+            GameManager.MaxLevelReached += 1;
+            Debug.Log("进度已更新！现在解锁了第 " + (GameManager.CurrentLevel  + 1) + " 关");
         }
 
         // 3. 接下来做什么？（二选一）
