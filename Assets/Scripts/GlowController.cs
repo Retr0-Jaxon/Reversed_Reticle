@@ -41,6 +41,15 @@ public class GlowController : MonoBehaviour
                         ((WaitCommand)command).WaitTime
                     );
                     break;
+                case GlowCommandType.Hint:
+                    ExecuteHint(command as HintCommand);
+                    // 只有当hintTime > 0时才自动取消提示
+                    if (((HintCommand)command).HintTime > 0)
+                    {
+                        yield return new WaitForSeconds(((HintCommand)command).HintTime);
+                        //ExecuteUnhint(command as HintCommand);
+                    }
+                    break;
             }
         }
         Main.resumeMouse();
@@ -62,8 +71,20 @@ public class GlowController : MonoBehaviour
             unit.setGlow(false);
         }
     }
-    
-    
-    
-    
+
+    private void ExecuteHint(HintCommand command)
+    {
+        foreach (var tile in command.Tiles)
+        {
+            tile.GetComponent<TileVisualStateManager>().SetHint();
+        }
+    }
+
+    // private void ExecuteUnhint(HintCommand command)
+    // {
+    //     foreach (var tile in command.Tiles)
+    //     {
+    //         tile.GetComponent<TileVisualStateManager>().SetHint(false);
+    //     }
+    // }
 }

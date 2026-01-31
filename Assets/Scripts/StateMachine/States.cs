@@ -1,11 +1,15 @@
 
 // --- 空闲状态 ---
+
+
+
 public class IdleState : BaseVisualState
 {
     public IdleState(TileVisualStateManager manager) : base(manager) { }
     public override void Enter()
     {
-        manager.instanceMaterial.color = manager.idleColor;
+        manager.meshRenderer.material = manager.instanceMaterial;
+        manager.hoverEffect.originalMaterial = manager.instanceMaterial;
         //manager.instanceMaterial.DisableKeyword("_EMISSION");
     }
     public override void Update() { }
@@ -18,11 +22,13 @@ public class SelectedState : BaseVisualState
     public SelectedState(TileVisualStateManager manager) : base(manager) {}
     public override void Enter()
     {
-        manager.instanceMaterial.color = manager.selectedColor;
+        manager.meshRenderer.material = manager.selectedMaterial;
+        manager.hoverEffect.originalMaterial = manager.selectedMaterial;
     }
 
     public override void Update()
     {
+        //manager.meshRenderer.material = manager.selectedMaterial;
     }
 
     public override void Exit()
@@ -36,8 +42,12 @@ public class HintState : BaseVisualState
     public HintState(TileVisualStateManager manager) : base(manager) { }
     public override void Enter()
     {
-        if (manager.stripeMaterial != null)
-            manager.meshRenderer.material = manager.stripeMaterial;
+        // if (manager.stripeMaterial != null)
+        // {
+        //     manager.hoverEffect.originalMaterial = manager.stripeMaterial; 
+        //     manager.meshRenderer.material = manager.stripeMaterial;
+        //     manager.instanceMaterial = manager.stripeMaterial;
+        // }
     }
     public override void Update() { }
     public override void Exit() { }
@@ -49,8 +59,10 @@ public class LuminousState : BaseVisualState
     public LuminousState(TileVisualStateManager manager) : base(manager) { }
     public override void Enter()
     {
-        manager.meshRenderer.material = manager.instanceMaterial;
-        manager.instanceMaterial.color = manager.luminousColor;
+        //暂时把材质改为发光材质
+        //manager.meshRenderer.material = manager.instanceMaterial;
+        //manager.instanceMaterial.color = manager.luminousColor;
+        manager.meshRenderer.material=manager.luminousMaterial;
     }
     public override void Update() { }
     public override void Exit() { }

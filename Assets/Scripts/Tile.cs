@@ -77,7 +77,11 @@ public class Tile : MonoBehaviour
     public void setGlow(bool glow)
     {
         tileVisualStateManager.SetLuminous(glow);
-        
+    }
+
+    public void setHint()
+    {
+        tileVisualStateManager.SetHint();
     }
 
 

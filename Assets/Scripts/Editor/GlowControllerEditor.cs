@@ -47,6 +47,11 @@ public class GlowControllerEditor : Editor
         {
             controllerSequence.Commands.Add(new WaitCommand(1f));
         }
+        
+        if (GUILayout.Button("添加hint"))
+        {
+            controllerSequence.Commands.Add(new HintCommand(1, 0f));
+        }
 
         serializedObject.ApplyModifiedProperties();
         EditorUtility.SetDirty(controller);
@@ -101,6 +106,38 @@ public class GlowControllerEditor : Editor
                     "Wait Time (sec)",
                     waitCmd.WaitTime
                 );
+                break;
+
+            case GlowCommandType.Hint:
+                var hintCmd = cmd as HintCommand;
+                EditorGUILayout.BeginHorizontal();
+                int hintCount = Mathf.Max(0,
+                    EditorGUILayout.IntField(
+                        "提示tile数量",
+                        hintCmd.Tiles.Count,
+                        GUILayout.Width(EditorGUIUtility.currentViewWidth / 2 - 20)
+                    ));
+                hintCmd.HintTime = EditorGUILayout.FloatField(
+                    "提示时间(0=永久)",
+                    hintCmd.HintTime,
+                    GUILayout.Width(EditorGUIUtility.currentViewWidth / 2 - 20)
+                );
+                EditorGUILayout.EndHorizontal();
+
+                while (hintCount > hintCmd.Tiles.Count)
+                    hintCmd.Tiles.Add(null);
+                while (hintCount < hintCmd.Tiles.Count)
+                    hintCmd.Tiles.RemoveAt(hintCmd.Tiles.Count - 1);
+
+                for (int i = 0; i < hintCmd.Tiles.Count; i++)
+                {
+                    hintCmd.Tiles[i] = (Tile)EditorGUILayout.ObjectField(
+                        $"Tile {i}",
+                        hintCmd.Tiles[i],
+                        typeof(Tile),
+                        true
+                    );
+                }
                 break;
         }
     }

@@ -25,8 +25,8 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _Density: 10
-    - _ScrollSpeed: 1
+    - _Density: 1
+    - _ScrollSpeed: 0.1
     m_Colors:
     - _ColorA: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
     - _ColorB: {r: 0.7372549, g: 0.7176471, b: 0.7176471, a: 1}
