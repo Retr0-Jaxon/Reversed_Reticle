@@ -33,7 +33,7 @@ public class LevelButton : MonoBehaviour
 
         // 视觉反馈：如果没解锁，颜色变暗（可选）
         Image img = GetComponent<Image>();
-        img.color = isUnlocked ? Color.white : new Color(0.5f, 0.5f, 0.5f, 1f);
+        img.color = isUnlocked ? Color.white : new Color(1f, 1f, 1f, 1f);
 
         // 绑定点击事件
         btn.onClick.RemoveAllListeners();
