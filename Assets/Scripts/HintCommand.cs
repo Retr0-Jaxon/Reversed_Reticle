@@ -28,7 +28,7 @@ public class HintCommand : GlowCommand
     public HintCommand(int count, float hintTime = 0f)
     {
         this.hintTime = hintTime;
-        commandType = GlowCommandType.Hint;
+        CommandType = GlowCommandType.Hint;
         while (count > tiles.Count)
         {
             tiles.Add(null);

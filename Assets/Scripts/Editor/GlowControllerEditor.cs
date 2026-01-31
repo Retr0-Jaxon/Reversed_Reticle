@@ -1,35 +1,41 @@
-﻿using Enums;
+﻿using System.Collections.Generic;
+using Enums;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 
 [CustomEditor(typeof(GlowController))]
 public class GlowControllerEditor : Editor
 {
     private GlowController controller;
+    private Dictionary<GlowCommand, ReorderableList> glowTileLists;
+        
     
 
     private void OnEnable()
     {
         controller = (GlowController)target;
+        glowTileLists= new Dictionary<GlowCommand, ReorderableList>();
 
     }
 
     public override void OnInspectorGUI()
     {
-        var controllerSequence = controller.Sequence;
+        DrawDefaultInspector();
+        
 
-        for (int i = 0; i < controllerSequence.Commands.Count; i++)
+        for (int i = 0; i < controller.Commands.Count; i++)
         {
             EditorGUILayout.BeginVertical("box");
 
-            var cmd = controllerSequence.Commands[i];
+            var cmd = controller.Commands[i];
             EditorGUILayout.LabelField($"第{i+1}步", EditorStyles.boldLabel);
 
             DrawCommand(cmd);
 
             if (GUILayout.Button("Remove"))
             {
-                controllerSequence.Commands.RemoveAt(i);
+                controller.Commands.RemoveAt(i);
                 break;
             }
 
@@ -40,17 +46,17 @@ public class GlowControllerEditor : Editor
 
         if (GUILayout.Button("添加发光tiles"))
         {
-            controllerSequence.Commands.Add(new GlowUnitsCommand(1,1f));
+            controller.Commands.Add(new GlowUnitsCommand(1,1f));
         }
 
         if (GUILayout.Button("添加waitTime"))
         {
-            controllerSequence.Commands.Add(new WaitCommand(1f));
+            controller.Commands.Add(new WaitCommand(1f));
         }
         
         if (GUILayout.Button("添加hint"))
         {
-            controllerSequence.Commands.Add(new HintCommand(1, 0f));
+            controller.Commands.Add(new HintCommand(1, 0f));
         }
 
         serializedObject.ApplyModifiedProperties();
@@ -63,7 +69,7 @@ public class GlowControllerEditor : Editor
         {
             Debug.Log("null");
         }
-        switch (cmd.commandType)
+        switch (cmd.CommandType)
         {
             case GlowCommandType.GlowUnits:
                 var glowCmd = cmd as GlowUnitsCommand;
@@ -101,7 +107,7 @@ public class GlowControllerEditor : Editor
                 break;
 
             case GlowCommandType.Wait:
-                var waitCmd = cmd as WaitCommand;
+                var waitCmd= (WaitCommand)cmd;
                 waitCmd.WaitTime = EditorGUILayout.FloatField(
                     "Wait Time (sec)",
                     waitCmd.WaitTime
@@ -140,5 +146,32 @@ public class GlowControllerEditor : Editor
                 }
                 break;
         }
+    }
+    
+    private ReorderableList GetTileList(
+        GlowCommand cmd,
+        List<Tile> tiles,
+        Dictionary<GlowCommand, ReorderableList> cache,
+        string header)
+    {
+        if (cache.TryGetValue(cmd, out var list))
+            return list;
+        list = new ReorderableList(tiles, typeof(Tile), true, true, true, true);
+        list.drawHeaderCallback = rect =>
+        {
+            EditorGUI.LabelField(rect, header);
+        };
+        list.drawElementCallback = (rect, index, active, focused) =>
+        {
+            rect.y += 2;
+            tiles[index] = (Tile)EditorGUI.ObjectField(
+                rect,
+                tiles[index],
+                typeof(Tile),
+                true
+            );
+        };
+        cache[cmd] = list;
+        return list;
     }
 }

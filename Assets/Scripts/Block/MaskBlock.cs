@@ -36,6 +36,7 @@ public class MaskBlock : Buttons
         if (Input.GetMouseButtonUp(0))
         {
             onDragging = false;
+            // tryPlace();
             if (!IsValidPlacement())
             {
                 transform.position = lastValidPosition;
