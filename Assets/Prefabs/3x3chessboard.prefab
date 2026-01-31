@@ -637,7 +637,7 @@ GameObject:
   - component: {fileID: 8517536787880499492}
   - component: {fileID: 1031451079857609862}
   - component: {fileID: 472658813097240611}
-  - component: {fileID: 2547230451952276312}
+  - component: {fileID: 2278818408369109253}
   m_Layer: 0
   m_Name: 3x3chessboard
   m_TagString: Untagged
@@ -755,7 +755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 1872854874224676266, guid: 7ea30533ff07ac240bb556d98843b02d, type: 3}
   tileSize: 0.32
---- !u!114 &2547230451952276312
+--- !u!114 &2278818408369109253
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -767,40 +767,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c13197cb06463ab45918b6febf8a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sequence:
-    commands:
-    - rid: 1933836056579014681
-    - rid: 1933836056579014682
-    - rid: 8500643968109772800
+  commands: []
   references:
     version: 2
-    RefIds:
-    - rid: 1933836056579014681
-      type: {class: WaitCommand, ns: , asm: Assembly-CSharp}
-      data:
-        commandType: 1
-        waitTime: 1
-    - rid: 1933836056579014682
-      type: {class: GlowUnitsCommand, ns: , asm: Assembly-CSharp}
-      data:
-        commandType: 0
-        tiles:
-        - {fileID: 0}
-        - {fileID: 2340294812214337649}
-        - {fileID: 6078888222562749931}
-        glowTime: 1
-    - rid: 8500643968109772800
-      type: {class: HintCommand, ns: , asm: Assembly-CSharp}
-      data:
-        commandType: 2
-        tiles:
-        - {fileID: 391362318380401832}
-        - {fileID: 3145479797358173962}
-        - {fileID: 3105045589038318688}
-        - {fileID: 7655252860978037247}
-        - {fileID: 634633559924041284}
-        - {fileID: 3032350397391100355}
-        hintTime: 0
+    RefIds: []
 --- !u!1 &7484718217219015492
 GameObject:
   m_ObjectHideFlags: 0
