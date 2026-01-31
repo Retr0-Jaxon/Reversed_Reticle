@@ -1,0 +1,11 @@
+{
+	"name": "com.startech.buttons",
+	"displayName": "Buttons",
+	"version": "1.0.0",
+	"unity": "2022.3",
+	"description": "This is a button component",
+	"keywords": ["UI", "button"],
+	"category": "UI",
+	"dependencies": {
+	}
+}
