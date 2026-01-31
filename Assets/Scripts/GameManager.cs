@@ -5,17 +5,25 @@ public class GameManager : MonoBehaviour
 {
     // 当前正在玩的关卡
     public static int CurrentLevel = 1;
+    public const int FINAL_LEVEL = 6; // 定义最后一关是第6关
 
     // 已经解锁的最高关卡 (从本地存储读取)
     public static int MaxLevelReached 
     {
         get => PlayerPrefs.GetInt("MaxLevelReached", 1);
         set => PlayerPrefs.SetInt("MaxLevelReached", value);
+        
     }
     
     public static GameManager instance;
     private LevelManager levelManager;
-    
+     public GameObject thanksPanel; // 第6关通关后的感谢面板
+    private void Start()
+    {
+        // 确保感谢面板一开始是隐藏的
+        if (thanksPanel != null)
+            thanksPanel.SetActive(false);
+    }
     private void Awake()
     {
         // 简单的单例模式
@@ -58,7 +66,16 @@ public class GameManager : MonoBehaviour
         int nextLevel = CurrentLevel + 1;
 
         // 3. 加载下一关
-        // 注意：要在 Build Settings 里添加了对应的场景，否则会报错
-        SceneManager.LoadScene("Level" + nextLevel);
+         // 2. 判断是否是最后一关
+        if (CurrentLevel == FINAL_LEVEL)
+        {
+            // 如果是第6关，弹出感谢界面
+            if (thanksPanel != null) thanksPanel.SetActive(true);
+        }
+        else
+        {
+            // 不是最后一关，加载下一关
+            SceneManager.LoadScene("Level" + nextLevel);
+        }
     }
 }
