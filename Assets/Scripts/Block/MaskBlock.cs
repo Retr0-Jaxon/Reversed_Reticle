@@ -10,19 +10,33 @@ public class MaskBlock : Buttons
     private Vector3 lastValidPosition;
     private Quaternion lastValidRotation;
 
-    private List<Tile> coveredTiles;
+    private List<Tile> placedTiles;
     
     private Camera mainCamera;
 
     private bool onDragging;
+
+    private float startZ;
+    
+    private Vector3 startPosition;
+    private Quaternion start;
+
+    private bool isPlaced;
     
     
     public override void NextStart()
     {
         mainCamera=Camera.main;
         onDragging = false;
+        isPlaced = false;
+        
     }
 
+    private void Awake()
+    {
+        startZ = transform.position.z;
+        startPosition = transform.position;
+    }
     protected override void Update()
     {
         base.Update();
@@ -30,8 +44,12 @@ public class MaskBlock : Buttons
         // 按 R 旋转整个 L 方块
         if (Input.GetKeyDown(KeyCode.R))
         {
-            transform.Rotate(0, 0, -90f);
-            HighlightCoveredTiles();
+            if (!isPlaced)
+            {
+                transform.Rotate(0, 0, -90f);
+                HighlightCoveredTiles();
+            }
+            
         }
         
         // 松开鼠标，判定是否合法
@@ -42,10 +60,15 @@ public class MaskBlock : Buttons
             
             if (!TryPlace())
             {
-                transform.position = lastValidPosition;
-                transform.rotation = lastValidRotation;
+                backToPreviousLocation();
             }
         }
+    }
+
+    private void backToPreviousLocation()
+    {
+        transform.position = startPosition;
+        transform.rotation = lastValidRotation;
     }
 
     // Buttons 系统里的点击回调
@@ -63,16 +86,18 @@ public class MaskBlock : Buttons
 
     private void clearPlacedTiles()
     {
-        if (coveredTiles==null)
+        isPlaced = false;
+        
+        if (placedTiles!=null)
         {
-            return;
+            foreach (Tile tile in placedTiles)
+            {
+                tile.unSelect();
+                tile.ParentMaskBlock = null;
+            }
+            placedTiles = null;
         }
-        foreach (Tile tile in coveredTiles)
-        {
-            tile.unSelect();
-            tile.ParentMaskBlock = null;
-        }
-        coveredTiles = null;
+        
     }
 
     private void LateUpdate()
@@ -82,7 +107,7 @@ public class MaskBlock : Buttons
         {
             var mouseWorldPos = GetMouseWorldPos();
             var transformPos = mouseWorldPos;
-            transformPos.z -= 0.5f;
+            transformPos.z = startZ;
             transform.position = transformPos;
             HighlightCoveredTiles();
         }
@@ -114,12 +139,17 @@ public class MaskBlock : Buttons
         return result;
     }
 
-    private bool IsPlaceable()
+    private bool IsZeroTilePlaced()
+    {
+        return GetCoveredTiles().Count == 0;
+    }
+    
+    private bool TryPlace()
     {
         // 必须所有子块都正好落在 Tile 上
         var coveredTiles = GetCoveredTiles();
         var count = coveredTiles.Count;
-        if (count>0&&count!=subBlocks.Count)
+        if (coveredTiles.Count!=0&&count!=subBlocks.Count)
         {
             return false;
         }
@@ -133,24 +163,18 @@ public class MaskBlock : Buttons
                 return false;
             }
         }
-        return true;
-    }
-
-    private bool TryPlace()
-    {
-        if (!IsPlaceable())
+        
+        if (coveredTiles.Count==subBlocks.Count)
         {
-            return false;
+            foreach (var tile in coveredTiles)
+            {
+                tile.onSelected();
+                tile.ParentMaskBlock = this;
+            }
+            placedTiles = coveredTiles;
+            isPlaced = true;
+            SnapToTiles();
         }
-        coveredTiles = GetCoveredTiles();
-        foreach (var tile in coveredTiles)
-        {
-            tile.onClick();
-            tile.ParentMaskBlock = this;
-        }
-        SnapToTiles();
-
-
         return true;
     }
 
@@ -214,7 +238,7 @@ public class MaskBlock : Buttons
         Vector3 offset = targetTile.transform.position - refSub.position;
         transform.position += offset;
         var transformPosition = transform.position;
-        transformPosition.z +=0.15f;
+        transformPosition.z = 0.15f;
         transform.position = transformPosition;
     }
     

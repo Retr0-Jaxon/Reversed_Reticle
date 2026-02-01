@@ -73,10 +73,10 @@ public class Tile : MonoBehaviour
 
     public void onClick()
     {
-        onSelected();
+        
         if (Main.OperateMode==OperateMode.ClickMode)
         {
-            
+            onSelected();
         }
         else if (Main.OperateMode==OperateMode.DragMode)
         {
