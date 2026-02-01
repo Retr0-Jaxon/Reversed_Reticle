@@ -282,7 +282,8 @@ public class MaskBlock : Buttons
         Vector3 offset = targetTile.transform.position - refSub.position;
         transform.position += offset;
         var transformPosition = transform.position;
-        transformPosition.z = 0.15f;
+        // transformPosition.z = 0.15f;
+        transformPosition.z = -0.01f;
         transform.position = transformPosition;
     }
     
