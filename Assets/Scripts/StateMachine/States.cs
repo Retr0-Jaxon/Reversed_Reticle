@@ -2,10 +2,14 @@
 // --- 空闲状态 ---
 
 
+using Enums;
 
 public class IdleState : BaseVisualState
 {
-    public IdleState(TileVisualStateManager manager) : base(manager) { }
+    public IdleState(TileVisualStateManager manager) : base(manager)
+    {
+        stateType = BaseVisualStateType.Idle;
+    }
     public override void Enter()
     {
         manager.meshRenderer.material = manager.instanceMaterial;
@@ -19,7 +23,10 @@ public class IdleState : BaseVisualState
 // --- 被选中的状态 ---
 public class SelectedState : BaseVisualState
 {
-    public SelectedState(TileVisualStateManager manager) : base(manager) {}
+    public SelectedState(TileVisualStateManager manager) : base(manager)
+    {
+        stateType = BaseVisualStateType.Selected;
+    }
     public override void Enter()
     {
         manager.meshRenderer.material = manager.selectedMaterial;
@@ -39,7 +46,10 @@ public class SelectedState : BaseVisualState
 // --- 提示状态 (条纹) ---
 public class HintState : BaseVisualState
 {
-    public HintState(TileVisualStateManager manager) : base(manager) { }
+    public HintState(TileVisualStateManager manager) : base(manager)
+    {
+        stateType = BaseVisualStateType.Hint;
+    }
     public override void Enter()
     {
         // if (manager.stripeMaterial != null)
@@ -56,7 +66,10 @@ public class HintState : BaseVisualState
 // --- 发光状态 ---
 public class LuminousState : BaseVisualState
 {
-    public LuminousState(TileVisualStateManager manager) : base(manager) { }
+    public LuminousState(TileVisualStateManager manager) : base(manager)
+    {
+        stateType = BaseVisualStateType.Luminous;
+    }
     public override void Enter()
     {
         //暂时把材质改为发光材质

@@ -20,6 +20,13 @@ public class TileVisualStateManager : MonoBehaviour
     // 状态实例
     private BaseVisualState currentState;
     public IdleState IdleState { get; private set; }
+
+    public BaseVisualState CurrentState
+    {
+        get => currentState;
+        set => currentState = value;
+    }
+
     public SelectedState SelectedState { get; private set; }
     public HintState HintState { get; private set; }
     public LuminousState LuminousState { get; private set; }
