@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
         if (CurrentLevel == FINAL_LEVEL)
         {
             // 如果是第6关，弹出感谢界面
-            if (thanksPanel != null) thanksPanel.SetActive(true);
+            thanksPanel.SetActive(true);
             //测试是否执行到这里
             Debug.Log("Congratulations! You've completed the final level.");
 
