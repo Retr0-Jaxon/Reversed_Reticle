@@ -9,18 +9,34 @@ public class MaskBlock : Buttons
     
     private Vector3 lastValidPosition;
     private Quaternion lastValidRotation;
+
+    private List<Tile> placedTiles;
     
     private Camera mainCamera;
 
     private bool onDragging;
+
+    private float startZ;
+    
+    private Vector3 startPosition;
+    private Quaternion start;
+
+    private bool isPlaced;
     
     
     public override void NextStart()
     {
         mainCamera=Camera.main;
         onDragging = false;
+        isPlaced = false;
+        
     }
 
+    private void Awake()
+    {
+        startZ = transform.position.z;
+        startPosition = transform.position;
+    }
     protected override void Update()
     {
         base.Update();
@@ -28,29 +44,60 @@ public class MaskBlock : Buttons
         // 按 R 旋转整个 L 方块
         if (Input.GetKeyDown(KeyCode.R))
         {
-            transform.Rotate(0, 0, -90f);
-            HighlightCoveredTiles();
+            if (!isPlaced)
+            {
+                transform.Rotate(0, 0, -90f);
+                HighlightCoveredTiles();
+            }
+            
         }
         
         // 松开鼠标，判定是否合法
-        if (Input.GetMouseButtonUp(0))
+        if (onDragging&&Input.GetMouseButtonUp(0))
         {
             onDragging = false;
-            // tryPlace();
-            if (!IsValidPlacement())
+            
+            
+            if (!TryPlace())
             {
-                transform.position = lastValidPosition;
-                transform.rotation = lastValidRotation;
+                backToPreviousLocation();
             }
         }
+    }
+
+    private void backToPreviousLocation()
+    {
+        transform.position = startPosition;
+        transform.rotation = lastValidRotation;
     }
 
     // Buttons 系统里的点击回调
     public override void OnClick()
     {
+        if (!onDragging)
+        {
+            clearPlacedTiles();
+        }
         onDragging = true;
         lastValidPosition = transform.position;
         lastValidRotation = transform.rotation;
+        
+    }
+
+    private void clearPlacedTiles()
+    {
+        isPlaced = false;
+        
+        if (placedTiles!=null)
+        {
+            foreach (Tile tile in placedTiles)
+            {
+                tile.unSelect();
+                tile.ParentMaskBlock = null;
+            }
+            placedTiles = null;
+        }
+        
     }
 
     private void LateUpdate()
@@ -60,7 +107,7 @@ public class MaskBlock : Buttons
         {
             var mouseWorldPos = GetMouseWorldPos();
             var transformPos = mouseWorldPos;
-            transformPos.z -= 0.5f;
+            transformPos.z = startZ;
             transform.position = transformPos;
             HighlightCoveredTiles();
         }
@@ -92,17 +139,42 @@ public class MaskBlock : Buttons
         return result;
     }
 
-    private bool IsValidPlacement()
+    private bool IsZeroTilePlaced()
+    {
+        return GetCoveredTiles().Count == 0;
+    }
+    
+    private bool TryPlace()
     {
         // 必须所有子块都正好落在 Tile 上
-        var count = GetCoveredTiles().Count;
-        if (count>0&&count!=subBlocks.Count)
+        var coveredTiles = GetCoveredTiles();
+        var count = coveredTiles.Count;
+        if (coveredTiles.Count!=0&&count!=subBlocks.Count)
         {
             return false;
         }
         
-        //不能发生碰撞
-
+        //不能发生碰撞=>所有字块都不能先前已被选择
+        foreach (var tile in coveredTiles)
+        {
+            
+            if (tile.IsSelected)
+            {
+                return false;
+            }
+        }
+        
+        if (coveredTiles.Count==subBlocks.Count)
+        {
+            foreach (var tile in coveredTiles)
+            {
+                tile.onSelected();
+                tile.ParentMaskBlock = this;
+            }
+            placedTiles = coveredTiles;
+            isPlaced = true;
+            SnapToTiles();
+        }
         return true;
     }
 
@@ -117,7 +189,12 @@ public class MaskBlock : Buttons
         // 高亮当前覆盖的 Tile
         foreach (Tile tile in GetCoveredTiles())
         {
-            tile.glow();
+            if (!tile.IsSelected)
+            {
+                tile.glow();
+            }
+
+            
         }
     }
 
@@ -132,4 +209,43 @@ public class MaskBlock : Buttons
         }
         return transform.position;
     }
+    
+    
+    
+    private void SnapToTiles()
+    {
+        var coveredTiles = GetCoveredTiles();
+        // 没有覆盖 Tile，不吸附
+        if (coveredTiles.Count == 0)
+            return;
+        // 用第一个子块作为参考
+        Transform refSub = subBlocks[0];
+        // 找到它对应的 Tile
+        Tile targetTile = null;
+        float minDist = float.MaxValue;
+        foreach (Tile tile in Chessboard.instance.Tiles)
+        {
+            float dist = Vector2.Distance(refSub.position, tile.transform.position);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                targetTile = tile;
+            }
+        }
+        if (targetTile == null)
+            return;
+        // 计算偏移量（吸附核心）
+        Vector3 offset = targetTile.transform.position - refSub.position;
+        transform.position += offset;
+        var transformPosition = transform.position;
+        transformPosition.z = 0.15f;
+        transform.position = transformPosition;
+    }
+    
+    
+    
+    
+    
+    
+    
 }
