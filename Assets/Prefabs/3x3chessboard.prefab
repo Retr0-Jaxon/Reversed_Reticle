@@ -156,6 +156,7 @@ MonoBehaviour:
   tileType: 0
   x: 2
   y: 2
+  isSelected: 0
 --- !u!1 &2104039920372797130
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +313,7 @@ MonoBehaviour:
   tileType: 0
   x: 0
   y: 2
+  isSelected: 0
 --- !u!1 &3661217939553943897
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,6 +470,7 @@ MonoBehaviour:
   tileType: 0
   x: 2
   y: 0
+  isSelected: 0
 --- !u!1 &3691608156954437260
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,6 +627,7 @@ MonoBehaviour:
   tileType: 0
   x: 1
   y: 1
+  isSelected: 0
 --- !u!1 &4104969323589838114
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,6 +961,7 @@ MonoBehaviour:
   tileType: 0
   x: 1
   y: 0
+  isSelected: 0
 --- !u!1 &7691475204858711346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,6 +1118,7 @@ MonoBehaviour:
   tileType: 0
   x: 0
   y: 1
+  isSelected: 0
 --- !u!1 &8287793824177184867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,6 +1275,7 @@ MonoBehaviour:
   tileType: 0
   x: 2
   y: 1
+  isSelected: 0
 --- !u!1 &8643295296235722735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1425,6 +1432,7 @@ MonoBehaviour:
   tileType: 0
   x: 1
   y: 2
+  isSelected: 0
 --- !u!1001 &1556849890854659385
 PrefabInstance:
   m_ObjectHideFlags: 0

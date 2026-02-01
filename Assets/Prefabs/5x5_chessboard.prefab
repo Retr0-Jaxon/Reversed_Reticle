@@ -156,6 +156,7 @@ MonoBehaviour:
   tileType: 0
   x: 3
   y: 0
+  isSelected: 0
 --- !u!1 &27161966823142240
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +313,7 @@ MonoBehaviour:
   tileType: 0
   x: 1
   y: 4
+  isSelected: 0
 --- !u!1 &201760908051246752
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,6 +470,7 @@ MonoBehaviour:
   tileType: 0
   x: 0
   y: 2
+  isSelected: 0
 --- !u!1 &561994607847852783
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,6 +627,7 @@ MonoBehaviour:
   tileType: 0
   x: 2
   y: 0
+  isSelected: 0
 --- !u!1 &614549910796081946
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,6 +784,7 @@ MonoBehaviour:
   tileType: 0
   x: 2
   y: 2
+  isSelected: 0
 --- !u!1 &1101640726400519808
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,6 +941,7 @@ MonoBehaviour:
   tileType: 0
   x: 4
   y: 3
+  isSelected: 0
 --- !u!1 &1262779813177429801
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,6 +1098,7 @@ MonoBehaviour:
   tileType: 0
   x: 4
   y: 2
+  isSelected: 0
 --- !u!1 &1349839363461297566
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,6 +1255,7 @@ MonoBehaviour:
   tileType: 0
   x: 0
   y: 1
+  isSelected: 0
 --- !u!1 &1635519150723781597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,6 +1412,7 @@ MonoBehaviour:
   tileType: 0
   x: 1
   y: 3
+  isSelected: 0
 --- !u!1 &1876309457256766919
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,6 +1569,7 @@ MonoBehaviour:
   tileType: 0
   x: 3
   y: 4
+  isSelected: 0
 --- !u!1 &3097277992919062575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1716,6 +1726,7 @@ MonoBehaviour:
   tileType: 0
   x: 4
   y: 0
+  isSelected: 0
 --- !u!1 &3231515486979694357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1872,6 +1883,7 @@ MonoBehaviour:
   tileType: 0
   x: 4
   y: 1
+  isSelected: 0
 --- !u!1 &3608150470759744711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2028,6 +2040,7 @@ MonoBehaviour:
   tileType: 0
   x: 2
   y: 1
+  isSelected: 0
 --- !u!1 &3638942961973776454
 GameObject:
   m_ObjectHideFlags: 0
@@ -2184,6 +2197,7 @@ MonoBehaviour:
   tileType: 0
   x: 0
   y: 0
+  isSelected: 0
 --- !u!1 &4040140900055844672
 GameObject:
   m_ObjectHideFlags: 0
@@ -2340,6 +2354,7 @@ MonoBehaviour:
   tileType: 0
   x: 4
   y: 4
+  isSelected: 0
 --- !u!1 &4790262884969446118
 GameObject:
   m_ObjectHideFlags: 0
@@ -2496,6 +2511,7 @@ MonoBehaviour:
   tileType: 0
   x: 3
   y: 2
+  isSelected: 0
 --- !u!1 &5126414577037021093
 GameObject:
   m_ObjectHideFlags: 0
@@ -2652,6 +2668,7 @@ MonoBehaviour:
   tileType: 0
   x: 3
   y: 3
+  isSelected: 0
 --- !u!1 &5400640222665681463
 GameObject:
   m_ObjectHideFlags: 0
@@ -2808,6 +2825,7 @@ MonoBehaviour:
   tileType: 0
   x: 1
   y: 0
+  isSelected: 0
 --- !u!1 &5553314295146040801
 GameObject:
   m_ObjectHideFlags: 0
@@ -2964,6 +2982,7 @@ MonoBehaviour:
   tileType: 0
   x: 1
   y: 2
+  isSelected: 0
 --- !u!1 &6610744780537173506
 GameObject:
   m_ObjectHideFlags: 0
@@ -3120,6 +3139,7 @@ MonoBehaviour:
   tileType: 0
   x: 2
   y: 4
+  isSelected: 0
 --- !u!1 &6999081987629447544
 GameObject:
   m_ObjectHideFlags: 0
@@ -3279,40 +3299,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c13197cb06463ab45918b6febf8a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sequence:
-    commands:
-    - rid: 1933836056579014681
-    - rid: 1933836056579014682
-    - rid: 8500643968109772800
+  commands: []
   references:
     version: 2
-    RefIds:
-    - rid: 1933836056579014681
-      type: {class: WaitCommand, ns: , asm: Assembly-CSharp}
-      data:
-        commandType: 1
-        waitTime: 1
-    - rid: 1933836056579014682
-      type: {class: GlowUnitsCommand, ns: , asm: Assembly-CSharp}
-      data:
-        commandType: 0
-        tiles:
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
-        glowTime: 1
-    - rid: 8500643968109772800
-      type: {class: HintCommand, ns: , asm: Assembly-CSharp}
-      data:
-        commandType: 2
-        tiles:
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
-        hintTime: 0
+    RefIds: []
 --- !u!1 &7092929822310318750
 GameObject:
   m_ObjectHideFlags: 0
@@ -3469,6 +3459,7 @@ MonoBehaviour:
   tileType: 0
   x: 3
   y: 1
+  isSelected: 0
 --- !u!1 &7228473444379169812
 GameObject:
   m_ObjectHideFlags: 0
@@ -3625,6 +3616,7 @@ MonoBehaviour:
   tileType: 0
   x: 1
   y: 1
+  isSelected: 0
 --- !u!1 &7849252358542257079
 GameObject:
   m_ObjectHideFlags: 0
@@ -3781,6 +3773,7 @@ MonoBehaviour:
   tileType: 0
   x: 2
   y: 3
+  isSelected: 0
 --- !u!1 &8257449570009614250
 GameObject:
   m_ObjectHideFlags: 0
@@ -3937,6 +3930,7 @@ MonoBehaviour:
   tileType: 0
   x: 0
   y: 3
+  isSelected: 0
 --- !u!1 &9082527499507437011
 GameObject:
   m_ObjectHideFlags: 0
@@ -4093,3 +4087,4 @@ MonoBehaviour:
   tileType: 0
   x: 0
   y: 4
+  isSelected: 0
