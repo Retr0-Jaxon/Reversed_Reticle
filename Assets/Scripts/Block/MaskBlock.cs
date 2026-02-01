@@ -19,7 +19,7 @@ public class MaskBlock : Buttons
     private float startZ;
     
     private Vector3 startPosition;
-    private Quaternion start;
+    private Quaternion startRotation;
 
     private bool isPlaced;
     
@@ -29,14 +29,13 @@ public class MaskBlock : Buttons
         mainCamera=Camera.main;
         onDragging = false;
         isPlaced = false;
-        
-    }
-
-    private void Awake()
-    {
         startZ = transform.position.z;
         startPosition = transform.position;
+        startRotation = transform.rotation;
+        
+        
     }
+    
     protected override void Update()
     {
         base.Update();
@@ -68,7 +67,7 @@ public class MaskBlock : Buttons
     private void backToPreviousLocation()
     {
         transform.position = startPosition;
-        transform.rotation = lastValidRotation;
+        transform.rotation = startRotation;
     }
 
     // Buttons 系统里的点击回调
@@ -86,6 +85,7 @@ public class MaskBlock : Buttons
 
     private void clearPlacedTiles()
     {
+        ClearChessboardGlow();
         isPlaced = false;
         
         if (placedTiles!=null)
@@ -180,11 +180,7 @@ public class MaskBlock : Buttons
 
     void HighlightCoveredTiles()
     {
-        // 清空之前的高亮
-        foreach (Tile tile in Chessboard.instance.Tiles)
-        {
-            tile.stopGlow();
-        }
+        ClearChessboardGlow();
 
         // 高亮当前覆盖的 Tile
         foreach (Tile tile in GetCoveredTiles())
@@ -195,6 +191,15 @@ public class MaskBlock : Buttons
             }
 
             
+        }
+    }
+
+    private static void ClearChessboardGlow()
+    {
+        // 清空之前的高亮
+        foreach (Tile tile in Chessboard.instance.Tiles)
+        {
+            tile.stopGlow();
         }
     }
 
