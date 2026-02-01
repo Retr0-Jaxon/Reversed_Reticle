@@ -560,7 +560,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67, y: -74}
+  m_AnchoredPosition: {x: 67, y: -54}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &159189280
@@ -622,7 +622,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 1
   m_wordSpacing: 0
-  m_lineSpacing: 10
+  m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -1215,7 +1215,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -661, y: -42}
+  m_AnchoredPosition: {x: -661, y: 7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &422886808
@@ -2320,7 +2320,7 @@ GameObject:
   - component: {fileID: 1013993754}
   - component: {fileID: 1013993753}
   m_Layer: 5
-  m_Name: Level4
+  m_Name: Level3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2365,7 +2365,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 4
+  m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
   m_sharedMaterial: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
@@ -2456,7 +2456,7 @@ GameObject:
   - component: {fileID: 1148136878}
   - component: {fileID: 1148136881}
   m_Layer: 5
-  m_Name: Level4Button
+  m_Name: Level3Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2576,7 +2576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea203c83e8b624c5586a47a6452590ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelID: 4
+  levelID: 3
   levelPrefix: Level
 --- !u!1 &1220531213
 GameObject:
@@ -2883,7 +2883,7 @@ GameObject:
   - component: {fileID: 1265250537}
   - component: {fileID: 1265250540}
   m_Layer: 5
-  m_Name: Level5Button
+  m_Name: Level4Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3003,7 +3003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea203c83e8b624c5586a47a6452590ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelID: 5
+  levelID: 4
   levelPrefix: Level
 --- !u!1 &1319106513
 GameObject:
@@ -3658,7 +3658,7 @@ GameObject:
   - component: {fileID: 1378589109}
   - component: {fileID: 1378589108}
   m_Layer: 5
-  m_Name: Level5
+  m_Name: Level4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3703,7 +3703,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5
+  m_text: 4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
   m_sharedMaterial: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
@@ -3792,7 +3792,7 @@ GameObject:
   - component: {fileID: 1435287851}
   - component: {fileID: 1435287850}
   m_Layer: 5
-  m_Name: Level3
+  m_Name: Level5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3837,7 +3837,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3
+  m_text: 5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
   m_sharedMaterial: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
@@ -4179,7 +4179,7 @@ GameObject:
   - component: {fileID: 1543641651}
   - component: {fileID: 1543641650}
   m_Layer: 5
-  m_Name: 'Level3Button '
+  m_Name: 'Level5Button '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4217,7 +4217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea203c83e8b624c5586a47a6452590ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelID: 3
+  levelID: 5
   levelPrefix: Level
 --- !u!114 &1543641651
 MonoBehaviour:
@@ -4870,7 +4870,6 @@ MonoBehaviour:
   titlePanel: {fileID: 1449336527}
   levelSelectPanel: {fileID: 1242375353}
   CreditsPanel: {fileID: 789862738}
-  sidebarpanel: {fileID: 471681942}
   videoManager: {fileID: 198467867}
 --- !u!4 &1787137403
 Transform:
@@ -5055,7 +5054,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -591, y: -198}
+  m_AnchoredPosition: {x: -591, y: -153}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1968642828

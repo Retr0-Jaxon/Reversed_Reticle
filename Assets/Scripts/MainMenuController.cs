@@ -8,7 +8,6 @@ public class MainMenuController : MonoBehaviour
     public GameObject titlePanel;       // 拖入 TitlePanel
     public GameObject levelSelectPanel; // 拖入 LevelSelectPanel
     public GameObject CreditsPanel;     // 拖入 CreditsPanel
-    public GameObject sidebarpanel;
     public VideoManager videoManager;   // 拖入 VideoManager 脚本组件
     // 静态变量在场景切换时不会被重置
     public static bool showLevelSelectOnStart = false;
@@ -39,7 +38,6 @@ public class MainMenuController : MonoBehaviour
         titlePanel.SetActive(false);
         levelSelectPanel.SetActive(true);
         CreditsPanel.SetActive(false);
-        sidebarpanel.SetActive(false);
         
         if (videoManager != null) 
             videoManager.OnLevelSelected();

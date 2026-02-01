@@ -30,7 +30,7 @@ public class GlowUnitsCommand : GlowCommand
     public GlowUnitsCommand(int count, float glowTime)
     {
         this.glowTime = glowTime;
-        CommandType = GlowCommandType.GlowUnits;
+        commandType = GlowCommandType.GlowUnits;
         while (count > tiles.Count)
         {
             tiles.Add(null);

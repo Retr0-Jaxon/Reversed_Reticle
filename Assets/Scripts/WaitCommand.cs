@@ -23,7 +23,7 @@ public class WaitCommand:GlowCommand
     public WaitCommand(float waitTime)
     {
         this.waitTime = waitTime;
-        CommandType = GlowCommandType.Wait;
+        commandType = GlowCommandType.Wait;
     }
 
 }

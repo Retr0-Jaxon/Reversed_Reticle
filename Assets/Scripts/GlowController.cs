@@ -6,16 +6,16 @@ using UnityEngine;
 public class GlowController : MonoBehaviour
 {
     private Chessboard chessboard;
-    [SerializeReference]
     [SerializeField]
-    private List<GlowCommand> commands= new List<GlowCommand>();
 
+    private GlowSequence sequence;
 
-    public List<GlowCommand> Commands
+    public GlowSequence Sequence
     {
-        get => commands;
-        set => commands = value;
+        get => sequence;
+        set => sequence = value;
     }
+
 
     private void Start()
     {
@@ -25,9 +25,9 @@ public class GlowController : MonoBehaviour
     private IEnumerator PlaySequence()
     {
         Main.disabledMouse();
-        foreach (var command in Commands)
+        foreach (var command in sequence.Commands)
         {
-            switch (command.CommandType)
+            switch (command.commandType)
             {
                 case GlowCommandType.GlowUnits:
                     ExecuteGlow(command as GlowUnitsCommand);
