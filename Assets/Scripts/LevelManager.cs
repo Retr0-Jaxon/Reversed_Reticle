@@ -15,12 +15,12 @@ public class LevelManager
         Chessboard chessboard = Chessboard.instance;
         foreach (Tile tile in chessboard.Tiles)
         {
-            if (tile.isSelected&&tile.TileType==TileType.LIGHT)
+            if (tile.IsSelected&&tile.TileType==TileType.LIGHT)
             {
                 return false;
             }
 
-            if (!tile.isSelected&&tile.TileType==TileType.NORMAL)
+            if (!tile.IsSelected&&tile.TileType==TileType.NORMAL)
             {
                 return false;
             }

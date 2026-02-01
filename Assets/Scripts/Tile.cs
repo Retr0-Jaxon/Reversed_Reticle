@@ -11,6 +11,20 @@ public class Tile : MonoBehaviour
     
     private TileVisualStateManager tileVisualStateManager;
 
+    private MaskBlock parentMaskBlock;
+
+    public MaskBlock ParentMaskBlock
+    {
+        get => parentMaskBlock;
+        set => parentMaskBlock = value;
+    }
+
+    public TileVisualStateManager TileVisualStateManager
+    {
+        get => tileVisualStateManager;
+        set => tileVisualStateManager = value;
+    }
+
     /**
      * 发光的组号
      */
@@ -50,13 +64,58 @@ public class Tile : MonoBehaviour
         get => glowGroup;
         set => glowGroup = value;
     }
-    public bool isSelected { get;private set; }
+    [SerializeField]
+    private bool isSelected=false;
+    public bool IsSelected { get=>isSelected;private set=>isSelected=value; }
+
+    
 
 
     public void onClick()
     {
-        isSelected = !isSelected;
+        onSelected();
+        if (Main.OperateMode==OperateMode.ClickMode)
+        {
+            
+        }
+        else if (Main.OperateMode==OperateMode.DragMode)
+        {
+            if (parentMaskBlock!=null)
+            {
+                parentMaskBlock.OnClick();
+            }
+            
+        }
+        
+        
+    }
+
+    public void onSelected()
+    {
+        if (IsSelected)
+        {
+            unSelect();
+        }
+        else
+        {
+            select();
+        }
+    }
+
+
+    public void select()
+    {
+        IsSelected = true;
+        tileVisualStateManager.OnSelectedEffect();
         GameManager.instance.checkLevelComplete();
+    }
+    
+    public void unSelect()
+    {
+        IsSelected = false;
+        tileVisualStateManager.UnSelectedEffect();
+        
+        
     }
 
     /**

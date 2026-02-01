@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 public class Main
 {
     public static bool MouseEnabled=true;
+    public static OperateMode OperateMode = OperateMode.DragMode;
     
     
     public static void disabledMouse()

@@ -142,7 +142,7 @@ namespace com.startech.Buttons
         
         private void Click()
         {
-            Debug.Log("点击到了");
+            // Debug.Log("点击到了");
             if (onCooling)
             {
                 return;

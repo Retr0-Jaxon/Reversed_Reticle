@@ -1,3 +1,5 @@
+using Enums;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer))]
@@ -12,6 +14,8 @@ public class TileVisualStateManager : MonoBehaviour
     [HideInInspector] public TileHoverEffect hoverEffect;
     [HideInInspector] public MeshRenderer meshRenderer;
     //public Material baseMaterial;
+    
+    private Tile tile;
 
     // 状态实例
     private BaseVisualState currentState;
@@ -42,6 +46,14 @@ public class TileVisualStateManager : MonoBehaviour
 
         // 默认进入 Idle
         TransitionToState(IdleState);
+        
+        
+        
+        tile = GetComponent<Tile>();
+        if (tile==null)
+        {
+            tile=gameObject.AddComponent<Tile>();
+        }
     }
 
     void Update()
@@ -65,27 +77,24 @@ public class TileVisualStateManager : MonoBehaviour
         {
             return;
         }
+
+        tile.onClick();
+    }
+
+    
+
+    public void OnSelectedEffect()
+    {
         // Hint 和 Luminous 状态由外部控制不受点击影响
-        if (currentState == IdleState)
-        {
-            TransitionToState(SelectedState);
-            //GetComponent<TileHoverEffect>().originalMaterial = instanceMaterial;
-            
-        }
-        else if (currentState == SelectedState)
-        {
-            TransitionToState(IdleState);
-            //GetComponent<TileHoverEffect>().originalMaterial = instanceMaterial;
-        }
+        TransitionToState(SelectedState);
+    }
 
-        var component = GetComponent<Tile>();
-        if (component==null)
-        {
-            component=gameObject.AddComponent<Tile>();
-        }
-        component.onClick();
-    } 
-
+    public void UnSelectedEffect()
+    {
+        TransitionToState(IdleState);
+    }
+    
+    
     // 外部调用接口，例如：unit.SetHint(true);
 
 

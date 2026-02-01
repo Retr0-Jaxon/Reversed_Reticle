@@ -1,3 +1,4 @@
+using Enums;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer))]
@@ -19,7 +20,7 @@ public class TileHoverEffect : MonoBehaviour
     
     void OnMouseEnter()
     {
-        if (!Main.MouseEnabled)
+        if (!Main.MouseEnabled||Main.OperateMode!=OperateMode.ClickMode)
         {
             return;
         }
