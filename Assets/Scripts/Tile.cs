@@ -114,7 +114,7 @@ public class Tile : MonoBehaviour
     {
         IsSelected = false;
         tileVisualStateManager.UnSelectedEffect();
-        
+        GameManager.instance.checkLevelComplete();
         
     }
 
