@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     // 当前正在玩的关卡
     public static int CurrentLevel = 1;
-    public const int FINAL_LEVEL = 6; // 定义最后一关是第6关
+    public const int FINAL_LEVEL = 8; // 定义最后一关是第6关
 
     // 已经解锁的最高关卡 (从本地存储读取)
     public static int MaxLevelReached 
@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
         // 简单的单例模式
         if (instance == null) {
             instance = this;
+
             // 如果这个脚本挂在每个场景都有的物体上，且你不希望它消失：
             // DontDestroyOnLoad(gameObject); 
         }
