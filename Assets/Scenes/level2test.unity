@@ -267,6 +267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92fe83382de14ce884be62919b780f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilePrefab: {fileID: 0}
+  tileSize: 1
 --- !u!114 &30027825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,9 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c13197cb06463ab45918b6febf8a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chessboard: {fileID: 0}
-  sequence:
-    commands: []
+  commands: []
   references:
     version: 2
     RefIds: []
@@ -335,11 +335,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 3
   y: 2
-  <isSelected>k__BackingField: 0
 --- !u!114 &34879201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,12 +349,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &34879202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,11 +491,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 2
   y: 1
-  <isSelected>k__BackingField: 0
 --- !u!114 &96942457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,12 +505,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &96942458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,11 +647,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 2
   y: 4
-  <isSelected>k__BackingField: 0
 --- !u!114 &178551587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,12 +661,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &178551588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -812,11 +803,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 0
   y: 3
-  <isSelected>k__BackingField: 0
 --- !u!114 &289483977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,12 +817,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &289483978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -971,11 +959,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 1
   y: 2
-  <isSelected>k__BackingField: 0
 --- !u!114 &365463480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -988,12 +973,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &365463481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1130,11 +1115,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 0
   y: 0
-  <isSelected>k__BackingField: 0
 --- !u!114 &408146910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1147,12 +1129,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &408146911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1289,11 +1271,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 1
   y: 1
-  <isSelected>k__BackingField: 0
 --- !u!114 &538111265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1306,12 +1285,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &538111266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1448,11 +1427,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 0
   y: 2
-  <isSelected>k__BackingField: 0
 --- !u!114 &646732272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1465,12 +1441,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &646732273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1607,11 +1583,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 2
   y: 3
-  <isSelected>k__BackingField: 0
 --- !u!114 &690298479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1624,12 +1597,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &690298480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1766,11 +1739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 1
   y: 0
-  <isSelected>k__BackingField: 0
 --- !u!114 &693045046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1783,12 +1753,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &693045047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1925,11 +1895,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 1
   y: 3
-  <isSelected>k__BackingField: 0
 --- !u!114 &695736168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1942,12 +1909,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &695736169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2178,11 +2145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 2
   y: 0
-  <isSelected>k__BackingField: 0
 --- !u!114 &747843480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2195,12 +2159,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &747843481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2337,11 +2301,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 1
   y: 4
-  <isSelected>k__BackingField: 0
 --- !u!114 &759468568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2354,12 +2315,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &759468569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2496,11 +2457,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 4
   y: 3
-  <isSelected>k__BackingField: 0
 --- !u!114 &945590990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2513,12 +2471,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &945590991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2655,11 +2613,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 4
   y: 0
-  <isSelected>k__BackingField: 0
 --- !u!114 &953046774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2672,12 +2627,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &953046775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2869,6 +2824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ac7ef7c18b4c77a20473e3c3882031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thanksPanel: {fileID: 0}
 --- !u!1 &1009627608
 GameObject:
   m_ObjectHideFlags: 0
@@ -2919,11 +2875,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 4
   y: 1
-  <isSelected>k__BackingField: 0
 --- !u!114 &1009627611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2936,12 +2889,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &1009627612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3078,11 +3031,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 0
   y: 4
-  <isSelected>k__BackingField: 0
 --- !u!114 &1088810563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3095,12 +3045,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &1088810564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3237,11 +3187,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 3
   y: 1
-  <isSelected>k__BackingField: 0
 --- !u!114 &1210552740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3254,12 +3201,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &1210552741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3396,11 +3343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 4
   y: 2
-  <isSelected>k__BackingField: 0
 --- !u!114 &1251979972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3413,12 +3357,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &1251979973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3555,11 +3499,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 3
   y: 3
-  <isSelected>k__BackingField: 0
 --- !u!114 &1407647246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3572,12 +3513,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &1407647247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3714,11 +3655,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 4
   y: 4
-  <isSelected>k__BackingField: 0
 --- !u!114 &1452953516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3731,12 +3669,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &1452953517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3873,11 +3811,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 2
   y: 2
-  <isSelected>k__BackingField: 0
 --- !u!114 &1568352371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3890,12 +3825,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &1568352372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4138,11 +4073,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 3
   y: 4
-  <isSelected>k__BackingField: 0
 --- !u!114 &1691898350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4155,12 +4087,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &1691898351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4297,11 +4229,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 3
   y: 0
-  <isSelected>k__BackingField: 0
 --- !u!114 &1851184714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4314,12 +4243,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &1851184715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4456,11 +4385,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 0
-  tileVisualStateManager: {fileID: 0}
-  glowGroup: 0
   x: 0
   y: 1
-  <isSelected>k__BackingField: 0
 --- !u!114 &1999352979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4473,12 +4399,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e056b7edb0086418ba6c9319ef7e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleColor: {r: 0.735849, g: 0.7184941, b: 0.7184941, a: 1}
-  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  luminousColor: {r: 0.99215686, g: 0.36962298, b: 0.2901961, a: 1}
-  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
-  meshRenderer: {fileID: 0}
   instanceMaterial: {fileID: 0}
+  luminousMaterial: {fileID: 0}
+  stripeMaterial: {fileID: 2100000, guid: 202891eb79787164bbd27e8454300007, type: 2}
+  selectedMaterial: {fileID: 0}
+  hoverEffect: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!114 &1999352980
 MonoBehaviour:
   m_ObjectHideFlags: 0
