@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,18 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     
     private LevelManager levelManager;
+    
+    [SerializeField]
+    private OperateMode operateMode = OperateMode.ClickMode;
+    
+    
+    public static OperateMode OperateMode
+    {
+        get => instance.operateMode;
+        set => instance.operateMode = value;
+    }
+    
+    
     
     private void Awake()
     {

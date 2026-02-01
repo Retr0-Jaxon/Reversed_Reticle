@@ -5,9 +5,10 @@ using UnityEngine;
 public class Main
 {
     public static bool MouseEnabled=true;
-    public static OperateMode OperateMode = OperateMode.DragMode;
-    
-    
+
+    public static OperateMode OperateMode => GameManager.OperateMode;
+
+
     public static void disabledMouse()
     {
         MouseEnabled=false;
