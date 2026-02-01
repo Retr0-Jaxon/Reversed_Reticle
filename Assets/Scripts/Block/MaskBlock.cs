@@ -54,8 +54,6 @@ public class MaskBlock : Buttons
 
     private void LateUpdate()
     {
-        Debug.Log("lastValidPosition = " + lastValidPosition);
-        Debug.Log("lastValidRotation = " + lastValidRotation);
         // 拖动
         if (onDragging)
         {
