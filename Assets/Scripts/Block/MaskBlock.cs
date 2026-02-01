@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using com.startech.Buttons;
+using Enums;
 
 public class MaskBlock : Buttons
 {
@@ -40,32 +41,41 @@ public class MaskBlock : Buttons
     {
         base.Update();
 
-        // 按 R 旋转整个 L 方块
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            if (!isPlaced)
-            {
-                transform.Rotate(0, 0, -90f);
-                HighlightCoveredTiles();
-            }
-            
-        }
+        
         
         // 松开鼠标，判定是否合法
-        if (onDragging&&Input.GetMouseButtonUp(0))
+        if (onDragging)
         {
-            onDragging = false;
-            
-            
-            if (!TryPlace())
+            if (Input.GetMouseButtonUp(0))
             {
-                backToPreviousLocation();
+                onDragging = false;
+                if (!TryPlace())
+                {
+                    backToPreviousLocation();
+                }
             }
+            // 按 R 旋转整个 L 方块
+            else if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (!isPlaced)
+                {
+                    transform.Rotate(0, 0, -90f);
+                    HighlightCoveredTiles();
+                }
+            
+            }
+
+            
+            
+            
+            
+            
         }
     }
 
     private void backToPreviousLocation()
     {
+        ClearChessboardGlow();
         transform.position = startPosition;
         transform.rotation = startRotation;
     }
@@ -120,20 +130,44 @@ public class MaskBlock : Buttons
     List<Tile> GetCoveredTiles()
     {
         List<Tile> result = new List<Tile>();
+        
 
         foreach (Transform sub in subBlocks)
         {
+            float curDistance = 99999f;
+            Tile chooseTile = null;
             Vector3 subPos = sub.position;
 
             foreach (Tile tile in Chessboard.instance.Tiles)
             {
-                // tileSize = 1，所以 0.45 是安全阈值
-                if (Vector2.Distance(subPos, tile.transform.position) < 0.45f)
+                var distance = Vector2.Distance(subPos, tile.transform.position);
+                if (distance < 0.30f)
                 {
-                    result.Add(tile);
-                    break;
+                    if (Vector2.Distance(subPos, tile.transform.position) < curDistance)
+                    {
+                        curDistance = Vector2.Distance(subPos, tile.transform.position);
+                        chooseTile = tile;
+                    }
+                    
                 }
             }
+
+            if (chooseTile==null)
+            {
+                continue;
+            }
+            if (result.Contains( chooseTile))
+            {
+                return new List<Tile>();
+            }
+            else
+            {
+                result.Add(chooseTile);
+            }
+            
+            
+            
+            
         }
 
         return result;
@@ -199,7 +233,12 @@ public class MaskBlock : Buttons
         // 清空之前的高亮
         foreach (Tile tile in Chessboard.instance.Tiles)
         {
-            tile.stopGlow();
+            if (!tile.IsSelected && tile.TileVisualStateManager.CurrentState.StateType==BaseVisualStateType.Luminous) 
+            {
+                tile.stopGlow();
+            }
+
+            
         }
     }
 
