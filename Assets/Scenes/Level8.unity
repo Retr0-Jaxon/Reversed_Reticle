@@ -5150,7 +5150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ac7ef7c18b4c77a20473e3c3882031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  operateMode: 0
+  operateMode: 1
   thanksPanel: {fileID: 2119577148}
 --- !u!4 &1318933107
 Transform:
